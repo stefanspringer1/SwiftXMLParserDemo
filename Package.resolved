@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftXMLParser",
+        "repositoryURL": "https://github.com/stefanspringer1/SwiftXMLParser",
+        "state": {
+          "branch": null,
+          "revision": "d9ef61166da3aa02801365d97940193dc9bd01f7",
+          "version": "0.1.3"
+        }
+      },
+      {
+        "package": "XMLInterfaces",
+        "repositoryURL": "https://github.com/stefanspringer1/XMLInterfaces",
+        "state": {
+          "branch": null,
+          "revision": "a17a3e67f5b4e167ff870b9e9f19db993460af42",
+          "version": "0.1.3"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
