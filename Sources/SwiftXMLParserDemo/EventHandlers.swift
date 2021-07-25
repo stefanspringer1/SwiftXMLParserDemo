@@ -22,8 +22,8 @@ public class XMLEventPrinter: XMLInterfaces.DefaultXMLEventHandler {
         print("document type declaration for \"\(type)\": public ID \(publicID != nil ? "\"\(publicID ?? "")\"" : "-"), system ID \(systemID != nil ? "\"\(systemID ?? "")\"" : "-")")
     }
     
-    public override func text(text: String) {
-        print("text \"\(text)\"")
+    public override func text(text: String, isWhitespace: Bool) {
+        print("text (whitespace=\(isWhitespace)) \"\(text)\"")
     }
     
     public override func cdataSection(text: String) {
@@ -214,7 +214,7 @@ public class XMLEventFileWriter: XMLInterfaces.DefaultXMLEventHandler {
         write("<!DOCTYPE \(type)\(publicID != nil ? " PUBLIC \"\(attributeEscape(publicID))\"" : "")\(systemID != nil ? " \"\(attributeEscape(systemID))\"" : "")")
     }
     
-    public override func text(text: String) {
+    public override func text(text: String, isWhitespace: Bool) {
         considerPossibleElementContent()
         write(textEscape(text))
     }
@@ -365,7 +365,7 @@ class XMLEventCounter: XMLInterfaces.DefaultXMLEventHandler {
         allEvents += 1
     }
     
-    public override func text(text: String) {
+    public override func text(text: String, isWhitespace: Bool) {
         allEvents += 1
     }
     
