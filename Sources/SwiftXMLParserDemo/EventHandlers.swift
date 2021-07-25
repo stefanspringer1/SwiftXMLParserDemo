@@ -6,9 +6,9 @@
 
 import Foundation
 import SwiftXMLParser
-import XMLInterfaces
+import SwiftXMLInterfaces
 
-public class XMLEventPrinter: XMLInterfaces.DefaultXMLEventHandler {
+public class XMLEventPrinter: SwiftXMLInterfaces.DefaultXMLEventHandler {
     
     public override func documentStart() {
         print("document start")
@@ -91,7 +91,7 @@ public class XMLEventPrinter: XMLInterfaces.DefaultXMLEventHandler {
     }
 }
 
-public class XMLEventFileWriter: XMLInterfaces.DefaultXMLEventHandler {
+public class XMLEventFileWriter: SwiftXMLInterfaces.DefaultXMLEventHandler {
 
     private let fileHandle: FileHandle
     private let fullEscapes: Bool
@@ -114,7 +114,7 @@ public class XMLEventFileWriter: XMLInterfaces.DefaultXMLEventHandler {
             self.useWindowsNewlines = useWindowsNewlines
         }
         else {
-            throw SwiftXMLParser.XMLEventHandlerError("could not open file \(path)(")
+            throw SwiftXMLInterfaces.XMLEventHandlerError("could not open file \(path)(")
         }
     }
     
@@ -347,7 +347,7 @@ public class XMLEventFileWriter: XMLInterfaces.DefaultXMLEventHandler {
     }
 }
 
-class XMLEventCounter: XMLInterfaces.DefaultXMLEventHandler {
+class XMLEventCounter: SwiftXMLInterfaces.DefaultXMLEventHandler {
 
     var elementCount = 0
     

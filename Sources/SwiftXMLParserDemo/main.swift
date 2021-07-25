@@ -6,7 +6,7 @@
 
 import Foundation
 import SwiftXMLParser
-import XMLInterfaces
+import SwiftXMLInterfaces
 
 let start = DispatchTime.now()
 
@@ -42,7 +42,7 @@ CommandLine.arguments.dropFirst().forEach { argument in
 
 if let theSourcePath = sourcePath {
     do {
-        var eventHandler: XMLInterfaces.XMLEventHandler? = nil
+        var eventHandler: SwiftXMLInterfaces.XMLEventHandler? = nil
         if onlyCount {
             eventHandler = XMLEventCounter()
         }
@@ -68,7 +68,7 @@ if let theSourcePath = sourcePath {
         }
     }
     catch {
-        print(error)
+        print("ERROR: \(error.localizedDescription)")
     }
 }
 else {
