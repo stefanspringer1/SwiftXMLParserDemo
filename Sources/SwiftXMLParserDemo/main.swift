@@ -39,7 +39,7 @@ CommandLine.arguments.dropFirst().forEach { argument in
         print("too many arguments!"); exit(1)
     }
 }
-    
+
 if let theSourcePath = sourcePath {
     do {
         var eventHandler: XMLInterfaces.XMLEventHandler? = nil

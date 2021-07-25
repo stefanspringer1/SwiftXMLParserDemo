@@ -8,7 +8,7 @@ import Foundation
 import SwiftXMLParser
 import XMLInterfaces
 
-public class XMLEventPrinter: XMLInterfaces.XMLEventHandler {
+public class XMLEventPrinter: XMLInterfaces.DefaultXMLEventHandler {
     
     public override func documentStart() {
         print("document start")
@@ -91,7 +91,7 @@ public class XMLEventPrinter: XMLInterfaces.XMLEventHandler {
     }
 }
 
-public class XMLEventFileWriter: XMLInterfaces.XMLEventHandler {
+public class XMLEventFileWriter: XMLInterfaces.DefaultXMLEventHandler {
 
     private let fileHandle: FileHandle
     private let fullEscapes: Bool
@@ -347,7 +347,7 @@ public class XMLEventFileWriter: XMLInterfaces.XMLEventHandler {
     }
 }
 
-class XMLEventCounter: XMLInterfaces.XMLEventHandler {
+class XMLEventCounter: XMLInterfaces.DefaultXMLEventHandler {
 
     var elementCount = 0
     
