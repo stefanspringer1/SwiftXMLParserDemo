@@ -59,7 +59,7 @@ if let theSourcePath = sourcePath {
                     return "[entity \(entityName) in \(theAttributeContext)/\(theAttributeName))]"
                 }
                 else {
-                    return "[entity \(entityName)]"
+                    return nil
                 }
             }
             if let eventCounter = eventHandler as? XMLEventCounter {
