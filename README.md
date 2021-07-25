@@ -14,7 +14,7 @@ This demo is published under the Apache License 2.0. For questions or remarks se
 
 ## Usage on Windows
 
-This section describes how to install Swift on Windows and how to use this Swift package in the Clion IDE. If you do not want to change this package but only would like to build and run it as-is, instead of using Clion you could just run the command `swift build -c release` from within the package to build it.
+_First we describe how to install Swift on Windows._
 
 1. Install Visual Studio (get it from [https://visualstudio.microsoft.com](https://visualstudio.microsoft.com)).
    
@@ -28,6 +28,8 @@ copy %SDKROOT%\usr\share\visualc.modulemap "%VCToolsInstallDir%\include\module.m
 copy %SDKROOT%\usr\share\visualc.apinotes "%VCToolsInstallDir%\include\visualc.apinotes"
 copy %SDKROOT%\usr\share\winsdk.modulemap "%UniversalCRTSdkDir%\Include\%UCRTVersion%\um\module.modulemap"
 ```
+
+_Next, we describe to use this Swift package in the Clion IDE. If you do not want to change this package but only would like to build and run it as-is, instead of using Clion you could just run the command `swift build -c release` from within the package to build it._
 
 4. Different options could be considered for editing Swift source code. We describe the usage of CLion, a commercial IDE. You can get the installer from [https://www.jetbrains.com/clion](https://www.jetbrains.com/clion).
 
