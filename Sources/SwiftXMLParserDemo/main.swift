@@ -63,7 +63,7 @@ if let theSourcePath = sourcePath {
                 }
             }
             if let eventCounter = eventHandler as? XMLEventCounter {
-                print("\(eventCounter.elementCount) elements with \(eventCounter.allEvents) parse event in total")
+                print("\(eventCounter.elementCount) elements with \(eventCounter.allEvents) parse events in total")
             }
         }
     }
