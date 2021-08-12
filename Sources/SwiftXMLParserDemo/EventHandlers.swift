@@ -34,8 +34,8 @@ public class XMLEventPrinter: SwiftXMLInterfaces.DefaultXMLEventHandler {
         print("comment \"\(text)\"")
     }
     
-    public override func elementStart(name: String, attributes: inout [String:String]) {
-        print("element \"\(name)\" start, attributes \(attributes)")
+    public override func elementStart(name: String, attributes: inout [String:String], combineTexts: Bool) {
+        print("element \"\(name)\" start, attributes \(attributes), combineText = \(combineTexts)")
     }
     
     public override func elementEnd(name: String) {
@@ -229,7 +229,7 @@ public class XMLEventFileWriter: SwiftXMLInterfaces.DefaultXMLEventHandler {
         write("<!--\(textEscape(text))-->")
     }
     
-    public override func elementStart(name: String, attributes: inout [String:String]) {
+    public override func elementStart(name: String, attributes: inout [String:String], combineTexts: Bool) {
         closeDocumentTypeDeclaration()
         considerPossibleElementContent()
         write("<\(name)")
@@ -377,7 +377,7 @@ class XMLEventCounter: SwiftXMLInterfaces.DefaultXMLEventHandler {
         allEvents += 1
     }
     
-    public override func elementStart(name: String, attributes: inout [String:String]) {
+    public override func elementStart(name: String, attributes: inout [String:String], combineTexts: Bool) {
         allEvents += 1
         elementCount += 1
     }
