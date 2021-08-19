@@ -40,6 +40,12 @@ CommandLine.arguments.dropFirst().forEach { argument in
     }
 }
 
+class SimpleInternalEntityResolver: InternalEntityResolver {
+    func resolve(entityName: String, attributeContext: String?, attributeName: String?) -> String? {
+        return attributeContext != nil ? "[\(entityName)]" : nil
+    }
+}
+
 if let theSourcePath = sourcePath {
     do {
         var eventHandler: SwiftXMLInterfaces.XMLEventHandler? = nil
@@ -53,15 +59,7 @@ if let theSourcePath = sourcePath {
             eventHandler = XMLEventPrinter()
         }
         if let theEventHandler = eventHandler {
-            try SwiftXMLParser.parse(path: theSourcePath, eventHandler: theEventHandler) {
-                entityName, attributeContext, attributeName in
-                if let theAttributeContext = attributeContext, let theAttributeName = attributeName {
-                    return "[entity \(entityName) in \(theAttributeContext)/\(theAttributeName))]"
-                }
-                else {
-                    return nil
-                }
-            }
+            try SwiftXMLParser.parse(path: theSourcePath, eventHandler: theEventHandler, internalEntityResolver: SimpleInternalEntityResolver())
             if let eventCounter = eventHandler as? XMLEventCounter {
                 print("\(eventCounter.elementCount) elements with \(eventCounter.allEvents) parse events in total")
             }
