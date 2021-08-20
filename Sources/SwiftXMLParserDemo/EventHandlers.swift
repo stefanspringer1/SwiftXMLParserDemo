@@ -78,8 +78,8 @@ public class XMLEventPrinter: SwiftXMLInterfaces.DefaultXMLEventHandler {
         print("element type definition for \"\(name)\": \(text)")
     }
     
-    public override func attributeListDeclaration(elementName: String, text: String) {
-        print("attribute list definition for \"\(elementName)\": \(text)")
+    public override func attributeListDeclaration(name: String, text: String) {
+        print("attribute list definition for \"\(name)\": \(text)")
     }
     
     public override func parsingTime(seconds: Double) {
@@ -330,7 +330,7 @@ public class XMLEventFileWriter: SwiftXMLInterfaces.DefaultXMLEventHandler {
         writeLine(text)
     }
     
-    public override func attributeListDeclaration(elementName: String, text: String) {
+    public override func attributeListDeclaration(name: String, text: String) {
         ensureInternalSubset()
         write(" ")
         writeLine(text)
@@ -417,7 +417,7 @@ class XMLEventCounter: SwiftXMLInterfaces.DefaultXMLEventHandler {
         allEvents += 1
     }
     
-    public override func attributeListDeclaration(elementName: String, text: String) {
+    public override func attributeListDeclaration(name: String, text: String) {
         allEvents += 1
     }
     
