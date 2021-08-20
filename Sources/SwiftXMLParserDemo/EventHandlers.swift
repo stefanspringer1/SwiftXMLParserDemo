@@ -74,12 +74,12 @@ public class XMLEventPrinter: SwiftXMLInterfaces.DefaultXMLEventHandler {
         print("external entity \"\(name)\"")
     }
     
-    public override func elementDeclaration(text: String) {
-        print("element type definition: \(text)")
+    public override func elementDeclaration(name: String, text: String) {
+        print("element type definition for \"\(name)\": \(text)")
     }
     
-    public override func attributeListDeclaration(text: String) {
-        print("attribute list definition: \(text)")
+    public override func attributeListDeclaration(elementName: String, text: String) {
+        print("attribute list definition for \"\(elementName)\": \(text)")
     }
     
     public override func parsingTime(seconds: Double) {
@@ -274,12 +274,6 @@ public class XMLEventFileWriter: SwiftXMLInterfaces.DefaultXMLEventHandler {
         writeLine("\">")
     }
     
-    public override func parameterEntityDeclaration(name: String, value: String) {
-        ensureInternalSubset()
-        writeLine(" <!ENTITY \(name) \"\(attributeEscape(value))\">");
-
-    }
-    
     public override func externalEntityDeclaration(name: String, publicID: String?, systemID: String) {
         ensureInternalSubset()
         if publicID != nil {
@@ -330,16 +324,21 @@ public class XMLEventFileWriter: SwiftXMLInterfaces.DefaultXMLEventHandler {
         write("&\(name);")
     }
     
-    public override func elementDeclaration(text: String) {
+    public override func elementDeclaration(name: String, text: String) {
         ensureInternalSubset()
         write(" ")
         writeLine(text)
     }
     
-    public override func attributeListDeclaration(text: String) {
+    public override func attributeListDeclaration(elementName: String, text: String) {
         ensureInternalSubset()
         write(" ")
         writeLine(text)
+    }
+    
+    public override func parameterEntityDeclaration(name: String, value: String) {
+        ensureInternalSubset()
+        writeLine(" <!ENTITY \(name) \"\(attributeEscape(value))\">");
     }
     
     public override func documentEnd() {
@@ -394,10 +393,6 @@ class XMLEventCounter: SwiftXMLInterfaces.DefaultXMLEventHandler {
         allEvents += 1
     }
     
-    public override func parameterEntityDeclaration(name: String, value: String) {
-        allEvents += 1
-    }
-    
     public override func externalEntityDeclaration(name: String, publicID: String?, systemID: String) {
         allEvents += 1
     }
@@ -418,11 +413,15 @@ class XMLEventCounter: SwiftXMLInterfaces.DefaultXMLEventHandler {
         allEvents += 1
     }
     
-    public override func elementDeclaration(text: String) {
+    public override func elementDeclaration(name: String, text: String) {
         allEvents += 1
     }
     
-    public override func attributeListDeclaration(text: String) {
+    public override func attributeListDeclaration(elementName: String, text: String) {
+        allEvents += 1
+    }
+    
+    public override func parameterEntityDeclaration(name: String, value: String) {
         allEvents += 1
     }
     
