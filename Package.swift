@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "SwiftXMLParserDemo",
     dependencies: [
-        .package(url: "https://github.com/stefanspringer1/SwiftXMLParser", from: "0.1.42"),
+        .package(url: "https://github.com/stefanspringer1/SwiftXMLParser", from: "0.1.43"),
     ],
     targets: [
         .executableTarget(
